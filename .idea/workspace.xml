@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a1a9d8ed-a463-4e8d-abc5-9f97882a7a3d" name="Changes" comment="" />
+    <list default="true" id="a1a9d8ed-a463-4e8d-abc5-9f97882a7a3d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -9,6 +12,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="1427a83d-ca1c-4bfe-a739-a4e0c1874edf" />
+        <option name="url" value="https://github.com/Jhooomn/concessionaire-component.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="ProjectId" id="1zverwdfwiJrnFqUxN527xdiGF7" />
   <component name="ProjectViewState">
@@ -19,7 +30,9 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path" value="node" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="npm.Angular CLI Server">
@@ -55,6 +68,9 @@
       <workItem from="1635033192930" duration="656000" />
       <workItem from="1635040236946" duration="39000" />
       <workItem from="1635040315506" duration="15000" />
+      <workItem from="1635041480765" duration="45000" />
+      <workItem from="1635041539244" duration="34000" />
+      <workItem from="1635041575249" duration="10000" />
     </task>
     <servers />
   </component>
