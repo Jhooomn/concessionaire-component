@@ -105,7 +105,7 @@
                           [(ngModel)]="vehicleModel.imgLink"
                           type="url"
                           placeholder="link"
-                          (change) = "setManagementsImage(vehicleModel.imgLink)"
+                          (change)="setManagementsImage(vehicleModel.imgLink)"
                           required
                         />
                         <span class="icon is-small is-left">
@@ -213,7 +213,10 @@
                 <td style="text-align: center">
                   <div class="field">
                     <span class="icon is-small is-left">
-                      <button class="button is-white">
+                      <button
+                        class="button is-white"
+                        (click)="deleteVehicle(vehicle)"
+                      >
                         <i class="far fa-trash-alt" style="color: red"></i>
                       </button>
                     </span>

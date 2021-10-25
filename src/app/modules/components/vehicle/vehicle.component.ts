@@ -67,7 +67,22 @@ export class VehicleComponent implements OnInit {
     }
     return this.vehicleModel;
   }
-  deleteVehicle(): void {}
+  deleteVehicle(vehicle: Vehicle): void {
+    Swal.fire({
+      title: 'Do you want to remove ' + vehicle.model + '?',
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: 'Remove',
+      denyButtonText: `Don't Remove`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire('Removed!', '', 'success');
+        this.vehicleModelArray = [];
+      } else if (result.isDenied) {
+        Swal.fire(vehicle.model + ' was not removed!', '', 'info');
+      }
+    });
+  }
 
   viewVehicleImgUrlModal(vehicle: Vehicle): void {
     if (this.isVehicleModelValid(vehicle)) {
