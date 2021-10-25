@@ -105,6 +105,7 @@
                           [(ngModel)]="vehicleModel.imgLink"
                           type="url"
                           placeholder="link"
+                          (change) = "setManagementsImage(vehicleModel.imgLink)"
                           required
                         />
                         <span class="icon is-small is-left">
