@@ -98,6 +98,20 @@
                         </span>
                       </p>
                     </div>
+                    <div class="field">
+                      <p class="control has-icons-left">
+                        <input
+                          class="input"
+                          [(ngModel)]="vehicleModel.imgLink"
+                          type="url"
+                          placeholder="link"
+                          required
+                        />
+                        <span class="icon is-small is-left">
+                          <i class="fas fa-link"></i>
+                        </span>
+                      </p>
+                    </div>
                   </div>
                   <br />
                   <div class="container is-fluid">
@@ -140,6 +154,8 @@
 
                 <th>Km</th>
 
+                <th>URL</th>
+
                 <th>Edit</th>
 
                 <th>Delete</th>
@@ -169,8 +185,39 @@
                 <td style="text-align: center">
                   {{ vehicle.km }}
                 </td>
-                <td style="text-align: center">EDIT</td>
-                <td style="text-align: center">DELETE</td>
+                <td style="text-align: center">
+                  <div class="field">
+                    <span class="icon is-small is-left">
+                      <button
+                        class="button is-white"
+                        (click)="viewVehicleImgUrlModal(vehicle)"
+                      >
+                        <i class="fas fa-link" style="color: blue"></i>
+                      </button>
+                    </span>
+                  </div>
+                </td>
+                <td style="text-align: center">
+                  <div class="field">
+                    <span class="icon is-small is-left">
+                      <button
+                        class="button is-white"
+                        (click)="editVehicle(vehicle)"
+                      >
+                        <i class="fas fa-edit" style="color: green"></i>
+                      </button>
+                    </span>
+                  </div>
+                </td>
+                <td style="text-align: center">
+                  <div class="field">
+                    <span class="icon is-small is-left">
+                      <button class="button is-white">
+                        <i class="far fa-trash-alt" style="color: red"></i>
+                      </button>
+                    </span>
+                  </div>
+                </td>
               </tr>
             </table>
           </div>

@@ -17,10 +17,21 @@ export class VehicleComponent implements OnInit {
 
   ngOnInit(): void {
     this.managementsImage = 'https://bulma.io/images/placeholders/1280x960.png';
-    this.vehicleModelArray.push(new Vehicle(1, 'CAMPERO', 'MAZDA', '7', '2021', 'XYZ-785', '100'))
+    this.vehicleModelArray.push(
+      new Vehicle(
+        1,
+        'CAMPERO',
+        'MAZDA',
+        '7',
+        '2021',
+        'XYZ-785',
+        '100',
+        'www.google.com'
+      )
+    );
   }
   vehicleModelNewInstance(): Vehicle {
-    return new Vehicle(null, '', '', '', '', '', '');
+    return new Vehicle(null, '', '', '', '', '', '', '');
   }
 
   cleanManagementInputs(): void {
@@ -28,7 +39,7 @@ export class VehicleComponent implements OnInit {
   }
 
   saveVehicle(): Vehicle {
-    if (this.isVehicleModelValid()) {
+    if (this.isVehicleModelValid(this.vehicleModel)) {
       Swal.fire({
         position: 'center',
         icon: 'success',
@@ -36,6 +47,7 @@ export class VehicleComponent implements OnInit {
         showConfirmButton: false,
         timer: 1500,
       });
+      this.cleanManagementInputs();
       return this.vehicleModel;
     }
     Swal.fire({
@@ -46,14 +58,29 @@ export class VehicleComponent implements OnInit {
     return this.vehicleModel;
   }
 
-  isVehicleModelValid(): Boolean {
+  editVehicle(vehicle: Vehicle): Vehicle {
+    if (this.isVehicleModelValid(vehicle)) {
+      this.vehicleModel = vehicle;
+    }
+    return this.vehicleModel;
+  }
+  deleteVehicle(): void {}
+
+  viewVehicleImgUrlModal(vehicle: Vehicle): void {
+    if (this.isVehicleModelValid(vehicle)) {
+      Swal.fire(vehicle.imgLink as any);
+    }
+  }
+
+  isVehicleModelValid(vehicle: Vehicle): Boolean {
     return (
-      this.vehicleModel.brand != '' ||
-      this.vehicleModel.km != '' ||
-      this.vehicleModel.licensePlate != '' ||
-      this.vehicleModel.model != '' ||
-      this.vehicleModel.type != '' ||
-      this.vehicleModel.version != ''
+      vehicle.brand != '' &&
+      vehicle.km != '' &&
+      vehicle.licensePlate != '' &&
+      vehicle.model != '' &&
+      vehicle.type != '' &&
+      vehicle.version != '' &&
+      vehicle.imgLink != ''
     );
   }
 }

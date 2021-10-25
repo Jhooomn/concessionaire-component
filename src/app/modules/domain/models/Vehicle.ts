@@ -6,6 +6,7 @@ export class Vehicle {
   version: String;
   licensePlate: String;
   km: String;
+  imgLink: String
   constructor(
     id: any,
     type: String,
@@ -13,7 +14,8 @@ export class Vehicle {
     model: String,
     version: String,
     licensePlate: String,
-    km: String
+    km: String,
+    imgLink: String
   ) {
     this.id = id;
     this.type = type;
@@ -22,5 +24,6 @@ export class Vehicle {
     this.version = version;
     this.licensePlate = licensePlate;
     this.km = km;
+    this.imgLink = imgLink;
   }
 }
