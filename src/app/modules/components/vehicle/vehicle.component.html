@@ -121,7 +121,61 @@
           </div>
         </div>
       </div>
-      <div class="column is-two-thirds">2</div>
+      <div class="column is-two-thirds">
+        <div class="card">
+          <div class="container">
+            <table class="table is-striped is-fullwidth">
+              <thead class="th" style="text-align: center">
+                <th>Id</th>
+
+                <th>Type</th>
+
+                <th>Brand</th>
+
+                <th>Model</th>
+
+                <th>Version</th>
+
+                <th>License Plate</th>
+
+                <th>Km</th>
+
+                <th>Edit</th>
+
+                <th>Delete</th>
+              </thead>
+              <tr
+                *ngFor="let vehicle of vehicleModelArray"
+                style="text-align: center"
+              >
+                <td style="text-align: center">
+                  {{ vehicle.id }}
+                </td>
+                <td style="text-align: center">
+                  {{ vehicle.type }}
+                </td>
+                <td style="text-align: center">
+                  {{ vehicle.brand }}
+                </td>
+                <td style="text-align: center">
+                  {{ vehicle.model }}
+                </td>
+                <td style="text-align: center">
+                  {{ vehicle.version }}
+                </td>
+                <td style="text-align: center">
+                  {{ vehicle.licensePlate }}
+                </td>
+                <td style="text-align: center">
+                  {{ vehicle.km }}
+                </td>
+                <td style="text-align: center">EDIT</td>
+                <td style="text-align: center">DELETE</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

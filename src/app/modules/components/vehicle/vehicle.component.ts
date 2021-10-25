@@ -1,3 +1,4 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Vehicle } from '../../domain/models/Vehicle';
@@ -10,11 +11,13 @@ import { Vehicle } from '../../domain/models/Vehicle';
 export class VehicleComponent implements OnInit {
   managementsImage: String = '';
   vehicleModel = this.vehicleModelNewInstance();
+  vehicleModelArray: Vehicle[] = [];
 
   constructor() {}
 
   ngOnInit(): void {
     this.managementsImage = 'https://bulma.io/images/placeholders/1280x960.png';
+    this.vehicleModelArray.push(new Vehicle(1, 'CAMPERO', 'MAZDA', '7', '2021', 'XYZ-785', '100'))
   }
   vehicleModelNewInstance(): Vehicle {
     return new Vehicle(null, '', '', '', '', '', '');
