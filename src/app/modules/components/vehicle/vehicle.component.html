@@ -21,6 +21,7 @@
                           [(ngModel)]="vehicleModel.type"
                           type="text"
                           placeholder="Type"
+                          required
                         />
                         <span class="icon is-small is-left">
                           <i class="fas fa-car"></i>
@@ -34,6 +35,7 @@
                           [(ngModel)]="vehicleModel.brand"
                           type="text"
                           placeholder="Brand"
+                          required
                         />
                         <span class="icon is-small is-left">
                           <i class="fab fa-bandcamp"></i>
@@ -47,6 +49,7 @@
                           [(ngModel)]="vehicleModel.model"
                           type="text"
                           placeholder="Model"
+                          required
                         />
                         <span class="icon is-small is-left">
                           <i class="fab fa-buromobelexperte"></i>
@@ -60,6 +63,7 @@
                           [(ngModel)]="vehicleModel.version"
                           type="text"
                           placeholder="Version"
+                          required
                         />
                         <span class="icon is-small is-left">
                           <i class="far fa-code-commit"></i>
@@ -73,6 +77,7 @@
                           [(ngModel)]="vehicleModel.licensePlate"
                           type="text"
                           placeholder="License Plate"
+                          required
                         />
                         <span class="icon is-small is-left">
                           <i class="fas fa-lock"></i>
@@ -86,6 +91,7 @@
                           [(ngModel)]="vehicleModel.km"
                           type="text"
                           placeholder="Km"
+                          required
                         />
                         <span class="icon is-small is-left">
                           <i class="fas fa-car-crash"></i>
@@ -93,13 +99,18 @@
                       </p>
                     </div>
                   </div>
-                  <br>
+                  <br />
                   <div class="container is-fluid">
                     <div class="columns">
                       <div class="column">
-                        <button class="button is-primary">Save</button>
+                        <button
+                          class="button is-primary"
+                          (click)="saveVehicle()"
+                        >
+                          Save
+                        </button>
                       </div>
-                      <div class="column" (click) = "cleanManagementInputs()">
+                      <div class="column" (click)="cleanManagementInputs()">
                         <button class="button is-danger">Clean</button>
                       </div>
                     </div>

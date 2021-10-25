@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 import { Vehicle } from '../../domain/models/Vehicle';
 
 @Component({
@@ -21,5 +22,35 @@ export class VehicleComponent implements OnInit {
 
   cleanManagementInputs(): void {
     this.vehicleModel = this.vehicleModelNewInstance();
+  }
+
+  saveVehicle(): Vehicle {
+    if (this.isVehicleModelValid()) {
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Your work has been saved',
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      return this.vehicleModel;
+    }
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'All values are required!',
+    });
+    return this.vehicleModel;
+  }
+
+  isVehicleModelValid(): Boolean {
+    return (
+      this.vehicleModel.brand != '' ||
+      this.vehicleModel.km != '' ||
+      this.vehicleModel.licensePlate != '' ||
+      this.vehicleModel.model != '' ||
+      this.vehicleModel.type != '' ||
+      this.vehicleModel.version != ''
+    );
   }
 }
