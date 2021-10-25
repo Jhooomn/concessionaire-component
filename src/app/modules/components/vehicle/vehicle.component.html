@@ -1,1 +1,232 @@
-<p>vehicle works!</p>
+<span> </span>
+<div class="container" style="text-align: center">
+  <div class="notification">
+    <div class="columns">
+      <div class="column">
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img src="{{ managementsImage }}" alt="Placeholder image" />
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="container is-fluid">
+              <div class="columns">
+                <div class="column">
+                  <div>
+                    <div class="field">
+                      <p class="control has-icons-left">
+                        <input
+                          class="input"
+                          [(ngModel)]="vehicleModel.type"
+                          type="text"
+                          placeholder="Type"
+                          required
+                        />
+                        <span class="icon is-small is-left">
+                          <i class="fas fa-car"></i>
+                        </span>
+                      </p>
+                    </div>
+                    <div class="field">
+                      <p class="control has-icons-left">
+                        <input
+                          class="input"
+                          [(ngModel)]="vehicleModel.brand"
+                          type="text"
+                          placeholder="Brand"
+                          required
+                        />
+                        <span class="icon is-small is-left">
+                          <i class="fab fa-bandcamp"></i>
+                        </span>
+                      </p>
+                    </div>
+                    <div class="field">
+                      <p class="control has-icons-left">
+                        <input
+                          class="input"
+                          [(ngModel)]="vehicleModel.model"
+                          type="text"
+                          placeholder="Model"
+                          required
+                        />
+                        <span class="icon is-small is-left">
+                          <i class="fab fa-buromobelexperte"></i>
+                        </span>
+                      </p>
+                    </div>
+                    <div class="field">
+                      <p class="control has-icons-left">
+                        <input
+                          class="input"
+                          [(ngModel)]="vehicleModel.version"
+                          type="text"
+                          placeholder="Version"
+                          required
+                        />
+                        <span class="icon is-small is-left">
+                          <i class="far fa-code-commit"></i>
+                        </span>
+                      </p>
+                    </div>
+                    <div class="field">
+                      <p class="control has-icons-left">
+                        <input
+                          class="input"
+                          [(ngModel)]="vehicleModel.licensePlate"
+                          type="text"
+                          placeholder="License Plate"
+                          required
+                        />
+                        <span class="icon is-small is-left">
+                          <i class="fas fa-lock"></i>
+                        </span>
+                      </p>
+                    </div>
+                    <div class="field">
+                      <p class="control has-icons-left">
+                        <input
+                          class="input"
+                          [(ngModel)]="vehicleModel.km"
+                          type="text"
+                          placeholder="Km"
+                          required
+                        />
+                        <span class="icon is-small is-left">
+                          <i class="fas fa-car-crash"></i>
+                        </span>
+                      </p>
+                    </div>
+                    <div class="field">
+                      <p class="control has-icons-left">
+                        <input
+                          class="input"
+                          [(ngModel)]="vehicleModel.imgLink"
+                          type="url"
+                          placeholder="link"
+                          (change)="setManagementsImage(vehicleModel.imgLink)"
+                          required
+                        />
+                        <span class="icon is-small is-left">
+                          <i class="fas fa-link"></i>
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                  <br />
+                  <div class="container is-fluid">
+                    <div class="columns">
+                      <div class="column">
+                        <button
+                          class="button is-primary"
+                          (click)="saveVehicle()"
+                        >
+                          Save
+                        </button>
+                      </div>
+                      <div class="column" (click)="cleanManagementInputs()">
+                        <button class="button is-danger">Clean</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column is-two-thirds">
+        <div class="card">
+          <div class="container">
+            <table class="table is-striped is-fullwidth">
+              <thead class="th" style="text-align: center">
+                <th>Id</th>
+
+                <th>Type</th>
+
+                <th>Brand</th>
+
+                <th>Model</th>
+
+                <th>Version</th>
+
+                <th>License Plate</th>
+
+                <th>Km</th>
+
+                <th>URL</th>
+
+                <th>Edit</th>
+
+                <th>Delete</th>
+              </thead>
+              <tr
+                *ngFor="let vehicle of vehicleModelArray"
+                style="text-align: center"
+              >
+                <td style="text-align: center">
+                  {{ vehicle.id }}
+                </td>
+                <td style="text-align: center">
+                  {{ vehicle.type }}
+                </td>
+                <td style="text-align: center">
+                  {{ vehicle.brand }}
+                </td>
+                <td style="text-align: center">
+                  {{ vehicle.model }}
+                </td>
+                <td style="text-align: center">
+                  {{ vehicle.version }}
+                </td>
+                <td style="text-align: center">
+                  {{ vehicle.licensePlate }}
+                </td>
+                <td style="text-align: center">
+                  {{ vehicle.km }}
+                </td>
+                <td style="text-align: center">
+                  <div class="field">
+                    <span class="icon is-small is-left">
+                      <button
+                        class="button is-white"
+                        (click)="viewVehicleImgUrlModal(vehicle)"
+                      >
+                        <i class="fas fa-link" style="color: blue"></i>
+                      </button>
+                    </span>
+                  </div>
+                </td>
+                <td style="text-align: center">
+                  <div class="field">
+                    <span class="icon is-small is-left">
+                      <button
+                        class="button is-white"
+                        (click)="editVehicle(vehicle)"
+                      >
+                        <i class="fas fa-edit" style="color: green"></i>
+                      </button>
+                    </span>
+                  </div>
+                </td>
+                <td style="text-align: center">
+                  <div class="field">
+                    <span class="icon is-small is-left">
+                      <button
+                        class="button is-white"
+                        (click)="deleteVehicle(vehicle)"
+                      >
+                        <i class="far fa-trash-alt" style="color: red"></i>
+                      </button>
+                    </span>
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

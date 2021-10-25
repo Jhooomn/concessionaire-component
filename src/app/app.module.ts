@@ -8,21 +8,20 @@ import { VehicleComponent } from './modules/components/vehicle/vehicle.component
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarMenuComponent } from './modules/components/commons/navbar-menu/navbar-menu.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
-
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    VehicleComponent,
-    NavbarMenuComponent
-  ],
+  declarations: [AppComponent, VehicleComponent, NavbarMenuComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SweetAlert2Module.forRoot()
+    SweetAlert2Module.forRoot(),
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
