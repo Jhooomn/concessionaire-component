@@ -14,9 +14,14 @@
               <div class="columns">
                 <div class="column">
                   <div>
-                    <div class="field" >
+                    <div class="field">
                       <p class="control has-icons-left">
-                        <input class="input" type="text" placeholder="Type"/>
+                        <input
+                          class="input"
+                          [(ngModel)]="vehicleModel.type"
+                          type="text"
+                          placeholder="Type"
+                        />
                         <span class="icon is-small is-left">
                           <i class="fas fa-car"></i>
                         </span>
@@ -24,7 +29,12 @@
                     </div>
                     <div class="field">
                       <p class="control has-icons-left">
-                        <input class="input" type="text" placeholder="Brand" />
+                        <input
+                          class="input"
+                          [(ngModel)]="vehicleModel.brand"
+                          type="text"
+                          placeholder="Brand"
+                        />
                         <span class="icon is-small is-left">
                           <i class="fab fa-bandcamp"></i>
                         </span>
@@ -32,7 +42,12 @@
                     </div>
                     <div class="field">
                       <p class="control has-icons-left">
-                        <input class="input" type="text" placeholder="Model" />
+                        <input
+                          class="input"
+                          [(ngModel)]="vehicleModel.model"
+                          type="text"
+                          placeholder="Model"
+                        />
                         <span class="icon is-small is-left">
                           <i class="fab fa-buromobelexperte"></i>
                         </span>
@@ -42,6 +57,7 @@
                       <p class="control has-icons-left">
                         <input
                           class="input"
+                          [(ngModel)]="vehicleModel.version"
                           type="text"
                           placeholder="Version"
                         />
@@ -54,6 +70,7 @@
                       <p class="control has-icons-left">
                         <input
                           class="input"
+                          [(ngModel)]="vehicleModel.licensePlate"
                           type="text"
                           placeholder="License Plate"
                         />
@@ -64,11 +81,27 @@
                     </div>
                     <div class="field">
                       <p class="control has-icons-left">
-                        <input class="input" type="text" placeholder="Km" />
+                        <input
+                          class="input"
+                          [(ngModel)]="vehicleModel.km"
+                          type="text"
+                          placeholder="Km"
+                        />
                         <span class="icon is-small is-left">
                           <i class="fas fa-car-crash"></i>
                         </span>
                       </p>
+                    </div>
+                  </div>
+                  <br>
+                  <div class="container is-fluid">
+                    <div class="columns">
+                      <div class="column">
+                        <button class="button is-primary">Save</button>
+                      </div>
+                      <div class="column" (click) = "cleanManagementInputs()">
+                        <button class="button is-danger">Clean</button>
+                      </div>
                     </div>
                   </div>
                 </div>
