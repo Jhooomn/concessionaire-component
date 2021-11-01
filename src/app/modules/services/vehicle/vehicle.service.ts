@@ -7,7 +7,7 @@ import { Vehicle } from '../../domain/models/Vehicle';
   providedIn: 'root',
 })
 export class VehicleService {
-  url = 'http://localhost:8080/vehicle';
+  url = 'http://127.0.0.1:8000/vehicles/?format=json';
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http: HttpClient) {}
