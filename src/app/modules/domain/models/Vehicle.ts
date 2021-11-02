@@ -1,5 +1,5 @@
 export class Vehicle {
-  id: any;
+  vid: any;
   type: String;
   brand: String;
   model: String;
@@ -8,7 +8,7 @@ export class Vehicle {
   km: String;
   imgLink: String
   constructor(
-    id: any,
+    vid: any,
     type: String,
     brand: String,
     model: String,
@@ -17,7 +17,7 @@ export class Vehicle {
     km: String,
     imgLink: String
   ) {
-    this.id = id;
+    this.vid = vid;
     this.type = type;
     this.brand = brand;
     this.model = model;

@@ -16,8 +16,9 @@ export class VehicleComponent implements OnInit {
     'https://bulma.io/images/placeholders/1280x960.png';
   constructor(private vehicleService: VehicleService) {}
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.managementsImage = this.initialManagementImg;
+    this.getVehicleList();
   }
 
   vehicleModelNewInstance(): Vehicle {
@@ -29,16 +30,25 @@ export class VehicleComponent implements OnInit {
     this.vehicleModel = this.vehicleModelNewInstance();
   }
 
-  saveVehicle(): Vehicle {
+  async getVehicleList(): Promise<void> {
+    this.vehicleService.getVehicles().subscribe((data) => {
+      this.vehicleModelArray = data;
+    });
+  }
+
+  async saveVehicle(): Promise<Vehicle> {
     if (this.isVehicleModelValid(this.vehicleModel)) {
-      Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Your work has been saved',
-        showConfirmButton: false,
-        timer: 1500,
+      this.vehicleService.createVehicle(this.vehicleModel).subscribe((data) => {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Your work has been saved',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        this.getVehicleList();
+        this.cleanManagementInputs();
       });
-      this.cleanManagementInputs();
       return this.vehicleModel;
     }
     Swal.fire({
@@ -56,7 +66,8 @@ export class VehicleComponent implements OnInit {
     }
     return this.vehicleModel;
   }
-  deleteVehicle(vehicle: Vehicle): void {
+
+  async deleteVehicle(vehicle: Vehicle): Promise<void> {
     Swal.fire({
       title: 'Do you want to remove ' + vehicle.model + '?',
       showDenyButton: true,
@@ -65,8 +76,10 @@ export class VehicleComponent implements OnInit {
       denyButtonText: `Don't Remove`,
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire('Removed!', '', 'success');
-        this.vehicleModelArray = [];
+        this.vehicleService.deleteVehicle(vehicle.vid).subscribe((data) => {
+          Swal.fire('Removed!', '', 'success');
+        });
+        this.getVehicleList();
       } else if (result.isDenied) {
         Swal.fire(vehicle.model + ' was not removed!', '', 'info');
       }
