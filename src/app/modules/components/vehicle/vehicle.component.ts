@@ -38,6 +38,10 @@ export class VehicleComponent implements OnInit {
 
   async saveVehicle(): Promise<Vehicle> {
     if (this.isVehicleModelValid(this.vehicleModel)) {
+      if (this.vehicleModel.vid != null) {
+        this.updateVehicle(this.vehicleModel);
+        return this.vehicleModel;
+      }
       this.vehicleService.createVehicle(this.vehicleModel).subscribe((data) => {
         Swal.fire({
           position: 'center',
@@ -57,6 +61,23 @@ export class VehicleComponent implements OnInit {
       text: 'All values are required!',
     });
     return this.vehicleModel;
+  }
+
+  async updateVehicle(vehicle: Vehicle): Promise<Vehicle> {
+    if (this.isVehicleModelValid(vehicle)) {
+      this.vehicleService.updateVehicle(vehicle).subscribe((data) => {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Your work has been updated!',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        this.getVehicleList();
+        this.cleanManagementInputs();
+      });
+    }
+    return this.vehicleModelNewInstance();
   }
 
   editVehicle(vehicle: Vehicle): Vehicle {
@@ -79,6 +100,7 @@ export class VehicleComponent implements OnInit {
         this.vehicleService.deleteVehicle(vehicle).subscribe((data) => {
           Swal.fire('Removed!', '', 'success');
           this.getVehicleList();
+          this.cleanManagementInputs();
         });
       } else if (result.isDenied) {
         Swal.fire(vehicle.model + ' was not removed!', '', 'info');
