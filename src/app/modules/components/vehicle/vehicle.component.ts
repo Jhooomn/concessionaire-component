@@ -38,6 +38,10 @@ export class VehicleComponent implements OnInit {
 
   async saveVehicle(): Promise<Vehicle> {
     if (this.isVehicleModelValid(this.vehicleModel)) {
+      if (this.vehicleModel.vid != null) {
+        this.updateVehicle(this.vehicleModel);
+        return this.vehicleModel;
+      }
       this.vehicleService.createVehicle(this.vehicleModel).subscribe((data) => {
         Swal.fire({
           position: 'center',
@@ -59,6 +63,23 @@ export class VehicleComponent implements OnInit {
     return this.vehicleModel;
   }
 
+  async updateVehicle(vehicle: Vehicle): Promise<Vehicle> {
+    if (this.isVehicleModelValid(vehicle)) {
+      this.vehicleService.updateVehicle(vehicle).subscribe((data) => {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Your work has been updated!',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        this.getVehicleList();
+        this.cleanManagementInputs();
+      });
+    }
+    return this.vehicleModelNewInstance();
+  }
+
   editVehicle(vehicle: Vehicle): Vehicle {
     if (this.isVehicleModelValid(vehicle)) {
       this.vehicleModel = vehicle;
@@ -76,10 +97,11 @@ export class VehicleComponent implements OnInit {
       denyButtonText: `Don't Remove`,
     }).then((result) => {
       if (result.isConfirmed) {
-        this.vehicleService.deleteVehicle(vehicle.vid).subscribe((data) => {
+        this.vehicleService.deleteVehicle(vehicle).subscribe((data) => {
           Swal.fire('Removed!', '', 'success');
+          this.getVehicleList();
+          this.cleanManagementInputs();
         });
-        this.getVehicleList();
       } else if (result.isDenied) {
         Swal.fire(vehicle.model + ' was not removed!', '', 'info');
       }
