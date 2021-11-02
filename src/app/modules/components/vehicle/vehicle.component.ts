@@ -76,10 +76,10 @@ export class VehicleComponent implements OnInit {
       denyButtonText: `Don't Remove`,
     }).then((result) => {
       if (result.isConfirmed) {
-        this.vehicleService.deleteVehicle(vehicle.vid).subscribe((data) => {
+        this.vehicleService.deleteVehicle(vehicle).subscribe((data) => {
           Swal.fire('Removed!', '', 'success');
+          this.getVehicleList();
         });
-        this.getVehicleList();
       } else if (result.isDenied) {
         Swal.fire(vehicle.model + ' was not removed!', '', 'info');
       }

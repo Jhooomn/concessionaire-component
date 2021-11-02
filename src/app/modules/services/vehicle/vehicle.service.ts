@@ -37,8 +37,9 @@ export class VehicleService {
     });
   }
 
-  deleteVehicle(id: number): Observable<Vehicle> {
-    return this.http.delete<Vehicle>(`${this.url}delete/${id}`, {
+
+  deleteVehicle(vehicle: Vehicle): Observable<Vehicle> {
+    return this.http.put<Vehicle>(this.url + 'delete', vehicle, {
       headers: this.httpHeaders,
     });
   }
